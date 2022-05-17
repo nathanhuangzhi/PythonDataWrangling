@@ -11,7 +11,8 @@ def binary_search(arr,ele):
         return binary_search(arr[mid+1:],ele)
 
 # print(binary_search([-1,0,3,5,9,12],9))
-
+a = [1,2,3,4]
+print(binary_search(a,4))
 
 def search(nums, target):
     """
