@@ -1,13 +1,37 @@
-def containdup(nums):
+def maxSubArray(nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
 
-    num_range = set()
-    for i in range(len(nums)):
-        if nums[i] not in num_range:
-            num_range.add(nums[i])
-            print(num_range)
+    sum_list = []
+    large_list = []
+    largest_sum = -9999999
+    sum_num = -9999999
+    for i in nums:
+
+        if sum_num < 0:
+            sum_num = i
+            sum_list = [i]
+            if largest_sum >= sum_num:
+                continue
+
+            else:
+                large_list = sum_list
+                largest_sum = sum_num
+
         else:
-            return True
+            sum_num += i
+            sum_list.append(i)
 
-    return False
+            if largest_sum < sum_num:
+                largest_sum = sum_num
+                large_list = sum_list
+            print(largest_sum,large_list)
 
-print(containdup([1,2,3,1]))
+    return largest_sum, large_list
+
+
+print(maxSubArray([1,3,2,1,5,-1,9,-2,-5,1,-5,2,3]))
+
+print(sum([1, 3, 2, 1, 5, -1, 9, -2, -5, 1, -5, 2, 3]))
